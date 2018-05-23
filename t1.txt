@@ -3,7 +3,7 @@
 #define TRIGGER_PIN 12
 #define ECHO_PIN 13
 Ultrasonic ultrasonic(TRIGGER_PIN,ECHO_PIN);
-LiquidCrystal lcd(12,11,5,4,3,2);
+LiquidCrystal lcd(10,11,5,4,3,2);
 void setup() {
   lcd.begin(16,2);
 }
@@ -12,11 +12,12 @@ void loop() {
   float cmMsec,inMsec;
   long microsec = ultrasonic.Timing();
   cmMsec = ultrasonic.Ranging(CM);
-  lcd.setCursor(0,1);
+  lcd.setCursor(0,0);
   lcd.print("MS: ");
   lcd.print(microsec);
-  lcd.print("ms");
-  lcd.print(",CM: ");
+  lcd.print("ms,");
+  lcd.setCursor(0,1);
+  lcd.print("CM: ");
   lcd.print(cmMsec);
   lcd.print("cm");
   delay(1000);
